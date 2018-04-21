@@ -11,9 +11,7 @@ app.use(bodyParser.urlencoded({
 
 app.post('/', bodyParser.json(), function (req, res, next) {
 
-	console.log(req.body);
-
-	if (req.body.command == "/name") {
+	if (req.body.command == "/name" && req.body.token == process.env.SLACK_KEY) {
 		magicthegathering.card(req.body.text, function (card) {
 			res.setHeader('Content-Type', 'application/json');
 			res.end(JSON.stringify(card, null, 4))
@@ -24,6 +22,8 @@ app.post('/', bodyParser.json(), function (req, res, next) {
 			"Error": "Command not recognized"
 		}))
 	}
+	
+	
 	/*
 	var newChart = {};
 	newChart.name = req.body.name;

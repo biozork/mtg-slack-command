@@ -17,17 +17,17 @@ var toolbox = {
 			.replace(/{B}/g, ':black:')
 			.replace(/{R}/g, ':red:')
 			.replace(/{G}/g, ':green:')
-			.replace(/{/g, '')
-			.replace(/}/g, ' ');
+			.replace(/{/g, '*')
+			.replace(/}/g, '* ');
 
 	},
 	cardInfo: function (card,input) {
 		let object = {
 			"response_type": "in_channel",
-			"text": input,
+			"text": `Searched for card: *${input}*.\n<http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}\|Read additional card details here>`,
 			"attachments": [
 				{
-					name: 'Searched for card: ' + card.name,
+					title: card.name,
 					text: card.text,
 					fields: [
 						{
