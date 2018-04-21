@@ -28,6 +28,7 @@ var toolbox = {
 			"attachments": [
 				{
 					name: card.name,
+					text: card.text,
 					fields: [
 						{
 							"title": "Type",
@@ -35,7 +36,7 @@ var toolbox = {
 							"short": true
 						},
 						{
-							"title": "Type",
+							"title": "Cost",
 							"value": toolbox.manaCost(card.manaCost),
 							"short": true
 						}
