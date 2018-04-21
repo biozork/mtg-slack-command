@@ -5,8 +5,8 @@ var toolbox = {
 		mtg
 			.card
 			.find(multiverseId)
-			.then(card => {
-				done(toolbox.cardRules(card))
+			.then(result => {
+				done(toolbox.cardRules(result.card))
 			});
 	},
 	cardRules: function (card) {
