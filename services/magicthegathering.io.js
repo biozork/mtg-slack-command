@@ -10,15 +10,18 @@ var toolbox = {
 				done(toolbox.cardInfo(card[0],input));
 			})
 	},
-	manaCost: function (cardCost) {
-		return cardCost
+	manaCost: function (str) {
+		
+		return (str != undefined) ? str
 			.replace(/{W}/g, ':white:')
 			.replace(/{U}/g, ':blue:')
 			.replace(/{B}/g, ':black:')
 			.replace(/{R}/g, ':red:')
 			.replace(/{G}/g, ':green:')
+			.replace(/{T}/g, ':tap:')
+			.replace(/{C}/g, ':colorless:')
 			.replace(/{/g, '*')
-			.replace(/}/g, '* ');
+			.replace(/}/g, '* ') : '';
 
 	},
 	cardInfo: function (card,input) {
@@ -28,7 +31,7 @@ var toolbox = {
 			"attachments": [
 				{
 					title: card.name,
-					text: card.text,
+					text: toolbox.manaCost(card.text),
 					fields: [
 						{
 							"title": "Type",
