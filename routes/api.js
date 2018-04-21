@@ -48,9 +48,9 @@ app.post('/interactive', bodyParser.json(), function (req, res, next) {
 			res.end(JSON.stringify(rules, null, 4))
 		})
 	} else if(payload.type == 'interactive_message' && payload.actions[0].name == "card"){
-		magicthegathering.card(payload.callback_id, function (rules) {
+		magicthegathering.card(payload.actions[0].value, function (card) {
 			res.setHeader('Content-Type', 'application/json');
-			res.end(JSON.stringify(payload.actions[0].value, null, 4))
+			res.end(JSON.stringify(card, null, 4))
 		})
 	} else {
 		res.end(JSON.stringify({
