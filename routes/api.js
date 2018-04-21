@@ -38,7 +38,8 @@ app.post('/', function (req, res, next) {
 
 app.post('/interactive', bodyParser.json(), function (req, res, next) {
 	let payload = JSON.parse(req.body.payload);
-
+	console.log(payload);
+	res.end()
 });
 
 module.exports = app;
