@@ -18,12 +18,20 @@ app.post('/', bodyParser.json(), function (req, res, next) {
 		})
 
 	} else {
-		res.end(JSON.stringify({
-			"Error": "Command not recognized"
-		}))
+
+		if (req.body.token != process.env.SLACK_KEY) {
+			res.end(JSON.stringify({
+				"Error": "Your app is not authorized to access this service"
+			}))
+		} else {
+			res.end(JSON.stringify({
+				"Error": "Command not recognized"
+			}))
+		}
+
 	}
-	
-	
+
+
 	/*
 	var newChart = {};
 	newChart.name = req.body.name;
