@@ -27,7 +27,7 @@ var toolbox = {
 	cardInfo: function (card,input) {
 		let object = {
 			"response_type": "in_channel",
-			"text": `Searched for card: *${input}*.\n<http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}\|Read additional card details here>`,
+			"text": `Searched for card: *${input}*.\n<http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}\|Read additional card details from Oracle here>`,
 			"attachments": [
 				{
 					title: card.name,
