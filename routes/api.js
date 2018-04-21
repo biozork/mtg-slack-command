@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-console.log(ding);
+console.log("ding");
 app.post('/', bodyParser.json(), function (req, res, next) {
 	console.log(req.body);
 
