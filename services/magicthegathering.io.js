@@ -43,6 +43,7 @@ var toolbox = {
 		}
 	},
 	card: function (input, done) {
+		console.log('Card name retrieved: ' + input);
 		mtg.card.where({
 				name: `"${input}"`, // quotes are required to make a specific search
 			})
