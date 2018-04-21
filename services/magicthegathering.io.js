@@ -55,6 +55,27 @@ var toolbox = {
 							"style": "primary"
 						}
 					]
+				},
+				{
+					"fallback": "Would you recommend it to customers?",
+					"title": "Would you recommend it to customers?",
+					"callback_id": "comic_1234_xyz",
+					"color": "#3AA3E3",
+					"attachment_type": "default",
+					"actions": [
+						{
+							"name": "recommend",
+							"text": "Recommend",
+							"type": "button",
+							"value": "recommend"
+						},
+						{
+							"name": "no",
+							"text": "No",
+							"type": "button",
+							"value": "bad"
+						}
+					]
 				}
 			]
 		}
