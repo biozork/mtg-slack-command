@@ -3,15 +3,15 @@ const mtg = require('mtgsdk');
 var toolbox = {
 	card: function (input, done) {
 		mtg.card.where({
-				name: `"${input}"`,	// quotes are required to make a specific search
+				name: `"${input}"`, // quotes are required to make a specific search
 			})
 			.then(card => {
 				//console.log(card[0])
-				done(toolbox.cardInfo(card[0],input));
+				done(toolbox.cardInfo(card[0], input));
 			})
 	},
 	manaCost: function (str) {
-		
+
 		return (str != undefined) ? str
 			.replace(/{W}/g, ':white:')
 			.replace(/{U}/g, ':blue:')
@@ -24,15 +24,15 @@ var toolbox = {
 			.replace(/}/g, '* ') : '';
 
 	},
-	cardInfo: function (card,input) {
+	cardInfo: function (card, input) {
 		let object = {
 			"response_type": "in_channel",
-			"text": `Searched for card: *${input}*.\n<http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}\|Read additional card details from Oracle here>`,
+			"text": `Searched for card: *${input}*.`,
 			"attachments": [
 				{
-					title: card.name,
-					text: toolbox.manaCost(card.text),
-					fields: [
+					"title": card.name,
+					"text": toolbox.manaCost(card.text),
+					"fields": [
 						{
 							"title": "Type",
 							"value": card.type,
@@ -44,9 +44,27 @@ var toolbox = {
 							"short": true
 						}
 					],
-					image_url: card.imageUrl
+					"image_url": card.imageUrl,
+					"actions": [
+						{
+							"type": "button",
+							"text": "View on Oracle",
+							"url": `http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}`,
+							"style": "primary"
+						}
+					]
 				}
 			]
+		}
+
+		if (card.rulings != undefined && card.rulings.length > 0) {
+			object.attachments[0].actions.push({
+				"name": "rulings",
+				"type": "button",
+				"text": "View rulings",
+				"style": "warning",
+				"value": "listrulings"
+			})
 		}
 
 		return object;
