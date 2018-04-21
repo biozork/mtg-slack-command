@@ -15,6 +15,7 @@ app.post('/', bodyParser.json(), function (req, res, next) {
 
 	if (req.body.command == "/name") {
 		magicthegathering.card(req.body.text, function (card) {
+			res.setHeader('Content-Type', 'application/json');
 			res.end(JSON.stringify(card, null, 4))
 		})
 
