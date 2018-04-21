@@ -32,6 +32,7 @@ var toolbox = {
 				{
 					"title": card.name,
 					"text": toolbox.manaCost(card.text),
+					"callback_id": "temp1234",
 					"fields": [
 						{
 							"title": "Type",
