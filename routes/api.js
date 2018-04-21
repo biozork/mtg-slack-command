@@ -8,9 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-console.log("ding");
+
 app.post('/', bodyParser.json(), function (req, res, next) {
 	console.log(req.body);
+	console.log(req.payload);
 
 	if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
 		magicthegathering.card(req.body.text, function (card) {
