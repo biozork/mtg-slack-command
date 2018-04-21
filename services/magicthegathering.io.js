@@ -1,6 +1,32 @@
 const mtg = require('mtgsdk');
 
 var toolbox = {
+	rulings: function (multiverseId, done) {
+		mtg
+			.card
+			.find(multiverseId)
+			.then(card => {
+				done(toolbox.cardRules(card))
+			});
+	},
+	cardRules: function (card) {
+		if (card.rulings.length > 0) {
+			let object = {
+				"response_type": "in_channel",
+				"text": `Rulings for card: *${card.name}*.`,
+				"attachments": []
+			}
+			for (let i = 0; i < card.rulings.length; i++) {
+				object.attacments.push({
+					"title": `Date: ${card.rulings[i].date}`,
+					"text": card.rulings[i].text
+				})
+			}
+
+			console.log(object);
+			return object;
+		}
+	},
 	card: function (input, done) {
 		mtg.card.where({
 				name: `"${input}"`, // quotes are required to make a specific search
@@ -32,7 +58,7 @@ var toolbox = {
 				{
 					"title": card.name,
 					"text": toolbox.manaCost(card.text),
-					"callback_id": "temp1234",
+					"callback_id": card.multiverseid,
 					"attachment_type": "default",
 					"fields": [
 						{
@@ -53,27 +79,6 @@ var toolbox = {
 							"text": "View on Oracle",
 							"url": `http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=${card.multiverseid}`,
 							"style": "primary"
-						}
-					]
-				},
-				{
-					"fallback": "Would you recommend it to customers?",
-					"title": "Would you recommend it to customers?",
-					"callback_id": "comic_1234_xyz",
-					"color": "#3AA3E3",
-					"attachment_type": "default",
-					"actions": [
-						{
-							"name": "recommend",
-							"text": "Recommend",
-							"type": "button",
-							"value": "recommend"
-						},
-						{
-							"name": "no",
-							"text": "No",
-							"type": "button",
-							"value": "bad"
 						}
 					]
 				}
