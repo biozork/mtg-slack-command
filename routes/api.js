@@ -9,7 +9,36 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 
-app.post('/', bodyParser.json(), function (req, res, next) {
+app.post('/', function (req, res, next) {
+	console.log(req.body);
+	console.log(req.payload);
+
+	if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
+		magicthegathering.card(req.body.text, function (card) {
+			res.setHeader('Content-Type', 'application/json');
+			res.end(JSON.stringify(card, null, 4))
+		})
+
+	} else {
+
+		if (req.body.token != process.env.SLACK_KEY) {
+			console.log('Server token: ' + process.env.SLACK_KEY);
+			console.log('Request token: ' + req.body.token);
+			
+			res.end(JSON.stringify({
+				"Error": "Your app is not authorized to access this service"
+			}))
+		} else {
+			res.end(JSON.stringify({
+				"Error": "Command not recognized"
+			}))
+		}
+
+	}
+
+});
+
+app.post('/button', function (req, res, next) {
 	console.log(req.body);
 	console.log(req.payload);
 
