@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.post('/', bodyParser.json(), function (req, res, next) {
+	console.log(req.body);
 
 	if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
 		magicthegathering.card(req.body.text, function (card) {
@@ -33,37 +34,6 @@ app.post('/', bodyParser.json(), function (req, res, next) {
 		}
 
 	}
-
-
-	/*
-	var newChart = {};
-	newChart.name = req.body.name;
-	newChart.data = [];
-	newChart.links = [];
-	newChart.options = {
-		marker: true,
-		progress: false,
-		public: false,
-		zoom: true,
-		starttime: true,
-		duration: true,
-		chartscale: true,
-		tooltip: false
-	};
-	if (req.user.googleID) {
-		newChart.googleID = req.user.googleID;
-	} else {
-		newChart.facebookID = req.user.facebookID;
-	}
-
-	//console.log(newChart);
-
-	firebaseTools.createChart(newChart, function (newKey) {
-		res.end(JSON.stringify({
-			key: newKey
-		}));
-	});
-	*/
 
 });
 
