@@ -1,0 +1,92 @@
+{
+	"payload": {
+		"type": "interactive_message",
+		"actions": [{
+			"name": "rulings",
+			"type": "button",
+			"value": "listrulings"
+		}],
+		"callback_id": "temp1234",
+		"team": {
+			"id": "TA88ATY92",
+			"domain": "mana-crypt"
+		},
+		"channel": {
+			"id": "CAATNAGLS",
+			"name": "mtg-bot-development"
+		},
+		"user": {
+			"id": "UA8C3REQ3",
+			"name": "zorrkling"
+		},
+		"action_ts": "1524350527.138126",
+		"message_ts": "1524350523.000018",
+		"attachment_id": "1",
+		"token": "83dRpKGXpwwmIEs8tVS5m9ZF",
+		"is_app_unfurl": false,
+		"original_message": {
+			"text": "Searched for card: *Sengir Vampire*.",
+			"bot_id": "BAB36NC0M",
+			"attachments": [{
+				"fallback": "226x311px image",
+				"image_url": "http:\\/\\/gatherer.wizards.com\\/Handlers\\/Image.ashx?multiverseid=220960&type=card",
+				"image_width": 226,
+				"image_height": 311,
+				"image_bytes": 32288,
+				"callback_id": "temp1234",
+				"text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhenever a creature dealt damage by Sengir Vampire this turn dies, put a +1/+1 counter on Sengir Vampire.",
+				"title": "Sengir Vampire",
+				"id": 1,
+				"fields": [{
+					"title": "Type",
+					"value": "Creature \\u2014 Vampire",
+					"short": true
+				}, {
+					"title": "Cost",
+					"value": "*3* :black::black:",
+					"short": true
+				}],
+				"actions": [{
+					"id": "1",
+					"text": "View on Oracle",
+					"type": "button",
+					"style": "primary",
+					"url": "http:\\/\\/gatherer.wizards.com\\/Pages\\/Card\\/Details.aspx?multiverseid=220960"
+				}, {
+					"id": "2",
+					"name": "rulings",
+					"text": "View rulings",
+					"type": "button",
+					"value": "listrulings",
+					"style": "warning"
+				}]
+			}, {
+				"callback_id": "comic_1234_xyz",
+				"fallback": "Would you recommend it to customers?",
+				"title": "Would you recommend it to customers?",
+				"id": 2,
+				"color": "3AA3E3",
+				"actions": [{
+					"id": "3",
+					"name": "recommend",
+					"text": "Recommend",
+					"type": "button",
+					"value": "recommend",
+					"style": ""
+				}, {
+					"id": "4",
+					"name": "no",
+					"text": "No",
+					"type": "button",
+					"value": "bad",
+					"style": ""
+				}]
+			}],
+			"type": "message",
+			"subtype": "bot_message",
+			"ts": "1524350523.000018"
+		},
+		"response_url": "https:\\/\\/hooks.slack.com\\/actions\\/TA88ATY92\\/350972844194\\/R2Clhd3eOsHa4H8YFRqPcoZZ",
+		"trigger_id": "350275976240.348282950308.77964cb49e7df2bb1caed71b0f750e56"
+	}
+}
