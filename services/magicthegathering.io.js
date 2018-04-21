@@ -12,7 +12,7 @@ var toolbox = {
 	cardRules: function (card) {
 		if (card.rulings.length > 0) {
 			let object = {
-				"response_type": "in_channel",
+				"response_type": "ephemeral",
 				"text": `Rulings for card: *${card.name}*.`,
 				"attachments": []
 			}
@@ -22,6 +22,21 @@ var toolbox = {
 					"text": card.rulings[i].text
 				})
 			}
+
+			object.attachments.push({
+				"title": 'View ' + card.name,
+				"callback_id": card.multiverseid,
+				"attachment_type": "default",
+				"actions": [
+					{
+						"name": "card",
+						"type": "button",
+						"text": "View card",
+						"style": "primary",
+						"value": card.name
+						}
+					]
+			})
 
 			console.log(object);
 			return object;
@@ -90,7 +105,7 @@ var toolbox = {
 				"name": "rulings",
 				"type": "button",
 				"text": "View rulings",
-				"style": "warning",
+				"style": "primary",
 				"value": "listrulings"
 			})
 		}

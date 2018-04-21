@@ -42,10 +42,15 @@ app.post('/interactive', bodyParser.json(), function (req, res, next) {
 	let payload = JSON.parse(req.body.payload);
 	console.log(payload);
 
-	if (payload.type == 'interactive_message' && payload.actions[0].value == "listrulings") {
+	if (payload.type == 'interactive_message' && payload.actions[0].name == "rulings") {
 		magicthegathering.rulings(payload.callback_id, function (rules) {
 			res.setHeader('Content-Type', 'application/json');
 			res.end(JSON.stringify(rules, null, 4))
+		})
+	} else if(payload.type == 'interactive_message' && payload.actions[0].name == "card"){
+		magicthegathering.card(payload.callback_id, function (rules) {
+			res.setHeader('Content-Type', 'application/json');
+			res.end(JSON.stringify(payload.actions[0].value, null, 4))
 		})
 	} else {
 		res.end(JSON.stringify({
