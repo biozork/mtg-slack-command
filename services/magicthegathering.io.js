@@ -3,7 +3,7 @@ const mtg = require('mtgsdk');
 var toolbox = {
 	card: function (input, done) {
 		mtg.card.where({
-				name: `"${inut}"`,	// quotes are required to make a specific search
+				name: `"${input}"`,	// quotes are required to make a specific search
 			})
 			.then(card => {
 				console.log(card[0])
