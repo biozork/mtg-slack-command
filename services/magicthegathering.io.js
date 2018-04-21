@@ -17,7 +17,7 @@ var toolbox = {
 				"attachments": []
 			}
 			for (let i = 0; i < card.rulings.length; i++) {
-				object.attacments.push({
+				object.attachments.push({
 					"title": `Date: ${card.rulings[i].date}`,
 					"text": card.rulings[i].text
 				})
