@@ -84,7 +84,7 @@ var toolbox = {
 						},
 						{
 							"title": "Cost",
-							"value": toolbox.manaCost(card.manaCost),
+							"value": toolbox.manaCost(card.manaCost) + ` (${card.cmc} cmc)`,
 							"short": true
 						}
 					],
