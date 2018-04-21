@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 
 app.post('/', bodyParser.json(), function (req, res, next) {
 
-	if (req.body.command == "/name" && req.body.token == process.env.SLACK_KEY) {
+	if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
 		magicthegathering.card(req.body.text, function (card) {
 			res.setHeader('Content-Type', 'application/json');
 			res.end(JSON.stringify(card, null, 4))
