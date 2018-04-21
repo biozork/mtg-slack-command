@@ -20,6 +20,9 @@ app.post('/', bodyParser.json(), function (req, res, next) {
 	} else {
 
 		if (req.body.token != process.env.SLACK_KEY) {
+			console.log('Server token: ' + process.env.SLACK_KEY);
+			console.log('Request token: ' + req.body.token);
+			
 			res.end(JSON.stringify({
 				"Error": "Your app is not authorized to access this service"
 			}))

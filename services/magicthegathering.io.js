@@ -6,7 +6,7 @@ var toolbox = {
 				name: `"${input}"`,	// quotes are required to make a specific search
 			})
 			.then(card => {
-				console.log(card[0])
+				//console.log(card[0])
 				done(toolbox.cardInfo(card[0],input));
 			})
 	},
