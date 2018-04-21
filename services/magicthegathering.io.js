@@ -33,6 +33,7 @@ var toolbox = {
 					"title": card.name,
 					"text": toolbox.manaCost(card.text),
 					"callback_id": "temp1234",
+					"attachment_type": "default",
 					"fields": [
 						{
 							"title": "Type",
