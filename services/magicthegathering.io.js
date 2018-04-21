@@ -1,13 +1,13 @@
 const mtg = require('mtgsdk');
 
 var toolbox = {
-	card: function (string, done) {
+	card: function (input, done) {
 		mtg.card.where({
-				name: string,
+				name: input,
 			})
 			.then(card => {
 				console.log(card[0])
-				done(toolbox.cardInfo(card[0]));
+				done(toolbox.cardInfo(card[0],input));
 			})
 	},
 	manaCost: function (cardCost) {
@@ -21,24 +21,30 @@ var toolbox = {
 			.replace(/}/g, ' ');
 
 	},
-	cardInfo: function (card) {
+	cardInfo: function (card,input) {
 		let object = {
-			name: card.name,
-			fields: [
+			"response_type": "in_channel",
+			"text": input,
+			"attachments": [
 				{
-					"title": "Type",
-					"value": card.type,
-					"short": true
-					},
-				{
-					"title": "Type",
-					"value": toolbox.manaCost(card.manaCost),
-					"short": true
-					}
-				],
-			image_url: card.imageUrl
+					name: card.name,
+					fields: [
+						{
+							"title": "Type",
+							"value": card.type,
+							"short": true
+						},
+						{
+							"title": "Type",
+							"value": toolbox.manaCost(card.manaCost),
+							"short": true
+						}
+					],
+					image_url: card.imageUrl
+				}
+			]
 		}
-		
+
 		return object;
 	}
 }
