@@ -27,7 +27,7 @@ var toolbox = {
 			"text": input,
 			"attachments": [
 				{
-					name: card.name,
+					name: 'Searched for card: ' + card.name,
 					text: card.text,
 					fields: [
 						{
