@@ -14,10 +14,19 @@ app.post('/', function (req, res, next) {
 	//console.log(req.payload);
 
 	if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
-		magicthegathering.card(req.body.text, function (card) {
+		
+        res.setHeader('Content-Type', 'application/json');
+        res.end({
+            "response_type": "ephemeral",
+            "text": "Thanks, I will look up that card for you.",
+        })
+        
+        /*
+        magicthegathering.card(req.body.text, function (card) {
 			res.setHeader('Content-Type', 'application/json');
 			res.end(JSON.stringify(card, null, 4))
 		})
+        */
 
 	} else {
 
