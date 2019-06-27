@@ -27,6 +27,7 @@ app.post('/', function (req, res, next) {
 
 
         magicthegathering.card(cardReq, function (card) {
+            console.log(card);
             request({
                 "method": "PUT",
                 "headers": {
