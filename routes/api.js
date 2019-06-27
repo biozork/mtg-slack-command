@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const magicthegathering = require('../services/magicthegathering.io.js');
+const request = require('request');
 
 var app = express();
 
