@@ -28,7 +28,7 @@ app.post('/', function (req, res, next) {
         magicthegathering.card(cardReq, function (card) {
             request.post({
                 "headers": {
-                    'Content-Type',
+                    'Content-Type':
                     'application/json'
                 },
                 "url": return_url,
