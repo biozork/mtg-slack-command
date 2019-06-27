@@ -16,12 +16,12 @@ app.post('/', function (req, res, next) {
     if (req.body.command == "/card" && req.body.token == process.env.SLACK_KEY) {
 
         let return_url = req.body.return_url;
-        let card = req.body.text;
+        let cardReq = req.body.text;
 
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({
             "response_type": "ephemeral",
-            "text": `Thanks, I will look up ${card} for you.`
+            "text": `Thanks, I will look up *${cardReq}* for you.`
         }));
 
 
