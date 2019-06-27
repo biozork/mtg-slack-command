@@ -19,7 +19,7 @@ app.post('/', function (req, res, next) {
         res.end(JSON.stringify({
             "response_type": "ephemeral",
             "text": "Thanks, I will look up that card for you."
-        });
+        }));
         
         /*
         magicthegathering.card(req.body.text, function (card) {
