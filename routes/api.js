@@ -27,14 +27,14 @@ app.post('/', function (req, res, next) {
 
 
         magicthegathering.card(cardReq, function (card) {
-            request.post({
+            request({
+                "method": "PUT",
                 "headers": {
-                    'Content-Type':
-                    'application/json'
+                    "Content-Type": "application/json"
                 },
-                "url": return_url,
-                form: {
-                    payload: card
+                "uri": return_url,
+                "form": {
+                    "payload": card
                 }
             }, function (err, httpResponse, body) {
                 if (err) {
